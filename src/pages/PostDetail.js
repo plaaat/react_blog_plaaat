@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import './markdown.css'
 
 function PostDetail() {
@@ -37,7 +39,25 @@ function PostDetail() {
 
     return (
         <div className="markdown-content mx-auto px-4 py-8 font-nanum-gothic">
-            <ReactMarkdown>{ post }</ReactMarkdown>
+            <ReactMarkdown
+                components={{
+                code({ node, inline, className, children, ...props }) {
+                    const match = /language-(\w+)/.exec(className || '')
+                    return !inline && match ? (
+                        <SyntaxHighlighter
+                            children={String(children).replace(/\n$/, '')}
+                            style={docco}
+                            language={match[1]}
+                            PreTag="div"
+                            {...props}
+                        />
+                    ) : (
+                        <code className={className} {...props}>
+                            {children}
+                        </code>
+                    )
+                },
+            }}>{ post }</ReactMarkdown>
         </div>
     );
 }

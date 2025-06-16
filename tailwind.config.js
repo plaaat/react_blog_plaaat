@@ -15,6 +15,7 @@ module.exports = {
       fontFamily: {
         'nanum-square': ['NanumSquare', 'sans-serif'],
         'nanum-gothic': ['Nanum Gothic', 'sans-serif'],
+        'nanum-gothic-coding': ['Nanum Gothic Coding', 'monospace'],
       },
     },
   },
