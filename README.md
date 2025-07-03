@@ -1,4 +1,4 @@
-# PlaaaT's Blog by React
+# PlaaaT's Blog by React[DEPRECATED]
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
